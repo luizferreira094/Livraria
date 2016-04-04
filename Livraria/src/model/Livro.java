@@ -15,9 +15,9 @@ public class Livro {
 	Date datapublicao;
 	int ISBN;
 	String categoria;
-	BigDecimal precovenda;
-	BigDecimal precocusto;
-	BigDecimal margelucro;
+	double precovenda;
+	double precocusto;
+	double margelucro;
 	int qtdestoque;
 	
 	
@@ -81,22 +81,22 @@ public class Livro {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-	public BigDecimal getPrecovenda() {
+	public double getPrecovenda() {
 		return precovenda;
 	}
-	public void setPrecovenda(BigDecimal precovenda) {
+	public void setPrecovenda(double precovenda) {
 		this.precovenda = precovenda;
 	}
-	public BigDecimal getPrecocusto() {
+	public double getPrecocusto() {
 		return precocusto;
 	}
-	public void setPrecocusto(BigDecimal precocusto) {
+	public void setPrecocusto(double precocusto) {
 		this.precocusto = precocusto;
 	}
-	public BigDecimal getMargelucro() {
+	public double getMargelucro() {
 		return margelucro;
 	}
-	public void setMargelucro(BigDecimal margelucro) {
+	public void setMargelucro(double margelucro) {
 		this.margelucro = margelucro;
 	}
 	public int getQtdestoque() {

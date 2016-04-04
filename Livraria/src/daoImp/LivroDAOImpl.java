@@ -14,8 +14,9 @@ public class LivroDAOImpl implements LivroDAO {
 
 	@Override
 	public void insert(Connection conn, Livro livro) {
-		String sql = "insert into livro(titulo,autor,resumo,editora,qtdpagina,formatolivro,ISBN,categoria,precovenda,precocusto,margelucro,qtdestoque) values(?,?,?,"+
-				"?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into livro(titulo,autor,resumo,sumario,editora,qtdpagina,formatolivro,datapublicao,ISBN,"
+				+ "categoria,precovenda,precocusto,margelucro,qtdestoque) values(?,?,?,"+
+				"?,?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
@@ -30,9 +31,9 @@ public class LivroDAOImpl implements LivroDAO {
 			stmt.setDate(++i, livro.getDatapublicao());
 			stmt.setInt(++i, livro.getISBN());
 			stmt.setString(++i, livro.getCategoria());
-			stmt.setBigDecimal(++i, livro.getPrecovenda());
-			stmt.setBigDecimal(++i, livro.getPrecocusto());
-			stmt.setBigDecimal(++i, livro.getMargelucro());
+			stmt.setDouble(++i, livro.getPrecovenda());
+			stmt.setDouble(++i, livro.getPrecocusto());
+			stmt.setDouble(++i, livro.getMargelucro());
 			stmt.setInt(++i, livro.getQtdestoque());
 			
 			stmt.execute();
@@ -51,7 +52,7 @@ public class LivroDAOImpl implements LivroDAO {
 		List<Livro> livroList = new ArrayList<>();
 		
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1, busca);
+		stmt.setString(1,  "%" + busca + "%");
 	
 		ResultSet rs = stmt.executeQuery();
 		
@@ -60,7 +61,7 @@ public class LivroDAOImpl implements LivroDAO {
 			
 			livro.setTitulo(rs.getString("titulo"));
 			livro.setAutor(rs.getString("autor"));
-			livro.setPrecovenda(rs.getBigDecimal("precovenda"));
+			livro.setPrecovenda(rs.getDouble("precovenda"));
 			
 			livroList.add(livro);
 		}
@@ -72,17 +73,15 @@ public class LivroDAOImpl implements LivroDAO {
 	}
 
 	@Override
-	public Livro details(Connection conn, String livroDetalhe) {
+	public Livro details(Connection conn, String nomeLivro) {
 		
 		Livro livro = new Livro();
 		
-		String sql = "select titulo, autor, precovenda, resumo,"
-				+ "sumario,formatolivro,editora,qtdpagina,"
-				+ "datapublicacao from livro where titulo = ?";
+		String sql = "select titulo, autor, precovenda, resumo,sumario,formatolivro,editora,qtdpagina,datapublicacao from livro where titulo like ?";
 		
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, livroDetalhe);
+			stmt.setString(1,  "%" + nomeLivro + "%");
 			
 			ResultSet rs = stmt.executeQuery();
 			
@@ -91,7 +90,7 @@ public class LivroDAOImpl implements LivroDAO {
 				
 				livro.setTitulo(rs.getString("titulo"));
 				livro.setAutor(rs.getString("autor"));
-				livro.setPrecovenda(rs.getBigDecimal("precovenda"));
+				livro.setPrecovenda(rs.getDouble("precovenda"));
 				livro.setResumo(rs.getString("resumo"));
 				livro.setSumario(rs.getString("sumario"));
 				livro.setFormatolivro(rs.getString("formatolivro"));

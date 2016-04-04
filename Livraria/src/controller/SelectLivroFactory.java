@@ -4,7 +4,7 @@ public class SelectLivroFactory {
 	
 	private String selectAutor(){
 		
-		return "select titulo, autor, precovenda from livro where autor = ?";
+		return "select titulo, autor, precovenda from livro where autor like ?";
 	}
 	
 	private String selectTitulo(){
