@@ -1,0 +1,46 @@
+
+@import url("reset.css");
+
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    background-image: url("img/jGlzr.png"); 
+    background-color: #cccccc;
+}
+}
+
+p {
+    padding: 10px;
+}
+
+#topo {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+#nav {
+    float: left;
+    height: 40px;
+    width: 1500px;
+    background: #ffffff;
+}
+
+#content {
+    float: center;
+    background: #CCCCCC;
+    width: 1400px;
+}
+#barra {
+	float: left;
+    background: #33CCFF;
+    width: 900px;
+    clear: none;
+    
+}
+#rodape {
+    height: 40px;
+    width: 1000px;
+    background: #c0c0c0;
+    clear: both;
+}
+

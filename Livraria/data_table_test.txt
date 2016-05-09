@@ -1,0 +1,33 @@
+		<h:form>
+			<h:panelGroup rendered="${empty(livroMB.livros)}">
+				<h4>Não há livros cadastrados no sistema.</h4>
+			</h:panelGroup>
+			<div class="table-responsive">
+				<h:dataTable value="${livroMB.livros}" var="l" border="2"
+					rendered="${not empty(livroMB.livros)}"
+					styleClass="table table-striped table-bordered table-hover">
+					<h:column>
+						<f:facet name="header"> Titulo </f:facet>
+									${l.titulo}
+							</h:column>
+					<h:column>
+						<f:facet name="header"> Autor </f:facet>
+									${l.autor}
+							</h:column>
+					<h:column>
+						<f:facet name="header"> Preço de Venda </f:facet>
+									${l.precovenda}
+							</h:column>
+					<h:column>
+						<f:facet name="header"></f:facet>
+						<h:commandButton action="${livroMB.deleteLivro(l)}"
+							value="Excluir" styleClass="pull-right btn btn-danger btn-xs" />
+						<h:commandButton action="crudObra"
+							actionListener="${livroMB.editarLivro(l)}" value="Editar"
+							styleClass="pull-right btn btn-primary btn-xs" />
+
+					</h:column>
+
+				</h:dataTable>
+			</div>
+		</h:form>

@@ -1,7 +1,9 @@
 package model;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
+
+import com.mysql.jdbc.Blob;
 
 public class Livro {
 	
@@ -16,10 +18,10 @@ public class Livro {
 	int ISBN;
 	String categoria;
 	double precovenda;
-	double precocusto;
-	double margelucro;
-	int qtdestoque;
-	
+	BigDecimal precocusto;
+	BigDecimal margelucro;
+	int qtdestoque;	
+	Blob imagem;
 	
 	public String getTitulo() {
 		return titulo;
@@ -87,16 +89,16 @@ public class Livro {
 	public void setPrecovenda(double precovenda) {
 		this.precovenda = precovenda;
 	}
-	public double getPrecocusto() {
+	public BigDecimal getPrecocusto() {
 		return precocusto;
 	}
-	public void setPrecocusto(double precocusto) {
+	public void setPrecocusto(BigDecimal precocusto) {
 		this.precocusto = precocusto;
 	}
-	public double getMargelucro() {
+	public BigDecimal getMargelucro() {
 		return margelucro;
 	}
-	public void setMargelucro(double margelucro) {
+	public void setMargelucro(BigDecimal margelucro) {
 		this.margelucro = margelucro;
 	}
 	public int getQtdestoque() {
@@ -105,13 +107,19 @@ public class Livro {
 	public void setQtdestoque(int qtdestoque) {
 		this.qtdestoque = qtdestoque;
 	}
+	public Blob getImagem() {
+		return imagem;
+	}
+	public void setImagem(Blob imagem) {
+		this.imagem = imagem;
+	}
 	@Override
 	public String toString() {
 		return "Livro [titulo=" + titulo + ", autor=" + autor + ", resumo=" + resumo + ", sumario=" + sumario
 				+ ", editora=" + editora + ", qtdpagina=" + qtdpagina + ", formatolivro=" + formatolivro
 				+ ", datapublicao=" + datapublicao + ", ISBN=" + ISBN + ", categoria=" + categoria + ", precovenda="
 				+ precovenda + ", precocusto=" + precocusto + ", margelucro=" + margelucro + ", qtdestoque="
-				+ qtdestoque + "]";
+				+ qtdestoque + ", imagem="+ imagem +",imagem="+imagem;
 	}
 	
 	

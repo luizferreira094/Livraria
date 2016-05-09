@@ -1,38 +1,55 @@
 package controller;
 
+import model.Busca;
+
 public class SelectLivroFactory {
 	
 	private String selectAutor(){
 		
-		return "select titulo, autor, precovenda from livro where autor like ?";
+		return "autor = ?";
 	}
 	
 	private String selectTitulo(){
 		
-		return "select titulo, autor, precovenda from livro where titulo = ?";
+		return "titulo = ?";
 		
 	}
 	private String selectEditora(){
-		return "select titulo, autor, precovenda from livro where editora = ?";
+		return "editora = ?";
 		
 	}
 	private String selectCategoria(){
-		return "select titulo, autor, precovenda from livro where categoria = ?";
+		return "categoria = ?";
 		
 	}
 	
-	public String getQuery(String tipoPesquisa){
+	public String getQuery(Busca busca){
 		
-		if(tipoPesquisa.equals("autor")){
-			return selectAutor();
-		}else if(tipoPesquisa.equals("titulo")){
-			return selectTitulo();
-		}else if(tipoPesquisa.equals("editora")){
-			return selectEditora();
-		}else if(tipoPesquisa.equals("categoria")){
-			return selectCategoria();
-		}else
-			return "Tipo de Busca Invalida";
+		StringBuilder sb = new StringBuilder();
+		sb.append("select * from livro where ");
+		int i = 0;
+		if(busca.getTitulo()!= null){
+			i++;
+			sb.append(selectTitulo());
+		}
+		if(busca.getCategoria()!=null){
+			i++;
+			sb.append(selectCategoria());
+		}
+		if(busca.getEditora()!=null){
+			i++;
+			sb.append(selectEditora());
+		}
+		if(busca.getAutor()!=null){
+			i++;
+			sb.append(selectAutor());
+		}
+		
+		
+		
+		return sb.toString();
+		
+		
 		
 	}
 

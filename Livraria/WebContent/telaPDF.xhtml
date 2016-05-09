@@ -1,0 +1,22 @@
+<html
+ xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:h="http://java.sun.com/jsf/html">
+<h:head />
+
+<h:body>
+ <h:form>
+  <h:panelGrid columns="2">
+   <h:outputText value="Arquivo:" />
+   <h:inputText value="#{pdfMB.arquivo}" />
+   <h:commandButton
+    value="Gerar Relatório"
+    action="#{pdfMB.CriaPDF}" />
+   <h:commandLink
+    value="Visualizar PDF"
+    action="#{pdfMB.visualizarPdf}"
+    target="_blank" />
+  </h:panelGrid>
+ </h:form>
+</h:body>
+</html>

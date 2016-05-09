@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class GenericDAO {
 	
 	private static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static String JDBC_URL = "jdbc:mysql://localhost/livraria";
+	private static String JDBC_URL = "jdbc:mysql://localhost:3306/livraria";
 	private static String USER = "root";
-	private static String PASSWORD = "root";
+	private static String PASSWORD = "root"; // NAO ESQUECE DE MUDAR AQUI HEIN
 	
 	private static GenericDAO instancia;
 	private Connection con;
@@ -23,9 +23,9 @@ public class GenericDAO {
 		if (instancia == null) { 
 			instancia = new GenericDAO();
 		}
-		return instancia;		
+		return instancia;		  
 	}
-
+	
 	public Connection getCon() {
 		return con;
 	}

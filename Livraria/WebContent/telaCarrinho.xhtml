@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge; charset=utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<meta name="description" content=""></meta>
+	<meta name="author" content=""></meta>
+	<title>Livraria Vendrabooks</title>
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js" />
+
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+
+	<link rel="stylesheet" href="css/styles.css" />
+	<link rel="stylesheet" href="css/tabela.css" />
+
+</h:head>
+<h:body>
+
+	<h:form>
+		<div id="conteudo">
+			<div class="cabecalho">
+				<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed"
+							data-toggle="collapse" data-target="#navbar"
+							aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="telaLivro.xhtml"><i
+							class="fa fa-home fa-fw"> </i></a><img src="img/vendra.png"
+							class="img-rounded" style="width: 170px; height: 50px;"></img>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li><a href="telaPesquisa.xhtml">Pesquisa de Livros <i
+									class="fa fa-search"></i>
+									<li class="active"><a href="telaCarrinho.xhtml">Meu
+											Carrinho <i class="fa fa-cart-plus"></i>
+									</a></li>
+									<li><a href="#">Lançamentos</a></li>
+									<li><a href="#">Promoções</a></li>
+									<li><a href="#">Mais Vendidos</a></li>
+									<li role="presentation" class="dropdown"><a
+										class="dropdown-toggle" data-toggle="dropdown" href="#"
+										role="button" aria-haspopup="true" aria-expanded="false">
+											Categoria <span class="caret"></span>
+									</a>
+										<ul class="dropdown-menu">
+											<li><a href="#">Engenharia de Software</a></li>
+											<li><a href="#">Esportes</a></li>
+											<li><a href="#">Filosofia</a></li>
+											<li><a href="#">Sociologia</a></li>
+											<li><a href="#">Geografia</a></li>
+											<li><a href="#">História</a></li>
+											<li><a href="#">Política</a></li>
+											<li><a href="#">Medicina</a></li>
+											<li><a href="#">Infantil</a></li>
+											<li><a href="#">Ficção Científica</a></li>
+											<li><a href="#">Geologia</a></li>
+											<li><a href="#">Química</a></li>
+											<li><a href="#">Auto Ajuda</a></li>
+											<li><a href="#">Aventura</a></li>
+											<li><a href="#">Antologias</a></li>
+											<li><a href="#">Agropecuária</a></li>
+											<li><a href="#">Relações Internacionais</a></li>
+											<li><a href="#">Romance</a></li>
+											<li><a href="#">Biografia</a></li>
+											<li><a href="#">Português</a></li>
+											<li><a href="#">Biologia</a></li>
+										</ul></li>
+									<li><p>
+											<a href="http://localhost:8080/Livraria/1_telaLogin.xhtml"
+												class="btn btn-info btn-lg"> <span
+												class="glyphicon glyphicon-log-out"></span> Log out
+											</a>
+										</p></li></a></li>
+						</ul>
+					</div>
+				</div>
+				</nav>
+			</div>
+
+
+			<p:messages id="messages" showDetail="true" autoUpdate="true"
+				closable="true" />
+
+			<style>
+</style>
+
+
+			<p:dataTable id="dtVenda" var="livros" value="#{carrinhoMB.atualizarCarrinho()}"
+				paginator="true" editable="true" rows="10" scrollable="true"
+				emptyMessage="Nenhum registro encontrado.">
+				<f:facet name="header">
+					<p:outputLabel value="Produtos no Carrinho" style="color: #595959;" />
+				</f:facet>
+
+				<p:column headerText="Título">
+					<h:outputText value="#{l.titulo}" />
+				</p:column>
+
+				<p:column headerText="Autor">
+					<h:outputText value="#{l.autor}" />
+				</p:column>
+
+				<p:column headerText="Preço">
+					<h:outputText value="#{l.precovenda}" />
+				</p:column>
+				<p:column headerText="Quantidade">
+					<h:outputLabel for="basic" value=" " />
+					<p:spinner id="basic" size="3" value="#{spinnerView.number1}" />
+					<h:outputText value="" />
+        <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
+
+				</p:column>
+				<p:column headerText="">
+					<h:column>
+						<f:facet name="header"></f:facet>
+						<h:commandButton action="${carrinhoMB.removerCarrinho(l)}"
+							value="Excluir" styleClass="pull-right btn btn-danger btn-xs" />
+						
+
+					</h:column>
+
+				</p:column>
+			</p:dataTable>
+
+
+
+
+
+
+			<div class="form-group">
+				<label class="col-md-7 control-label" for="textinput">Valor
+					Total:</label>
+				<div class="col-md-1">
+					<h:outputText id="textinput" name="textinput" type="text"
+						placeholder="R$" class="form-control input-md" />
+
+				</div>
+			</div>
+			<br> </br>
+
+<center>
+					<div class="grupoBotao">
+
+						<div class="botao">
+							<h:commandButton styleClass="btn btn-success" style="width:100px;" value="Comprar "
+								action="${livroMB.gravarLivro()}" />
+							
+
+						</div>
+
+					</div>
+					</center>
+
+<center>
+			<h:form>
+			
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+				<a href="telaPesquisa.xhtml" class="btn btn-default">Voltar</a>
+				
+			</h:form></center>
+		</div>
+	</h:form>
+
+
+
+
+	<center>
+	<div class="rodape">
+		<span>Site em desenvolvimento ® All Rights Reserved 2016 - <a
+			href="https://facebook.com" target="_blank"><i
+				class="fa fa-facebook-official"></i> Facebook</a> / <a
+			href="https://google.com" target="_blank"><i class="fa fa-google"></i>
+				Google</a></span>
+	</div>
+	</center>
+</h:body>
+</html>

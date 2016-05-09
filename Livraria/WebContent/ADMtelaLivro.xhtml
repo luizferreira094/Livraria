@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge; charset=utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<meta name="description" content=""></meta>
+	<meta name="author" content=""></meta>
+	<title>Livraria Vendrabooks</title>
+
+
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+
+	<link rel="stylesheet" href="css/layout.css" />
+
+</h:head>
+<h:body>
+
+	<div class="blended_grid">
+		<div class="pageHeader">
+			<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="ADMtelaLivro.xhtml"><i
+						class="fa fa-home fa-fw"> </i></a> <img src="img/vendra.png"
+						class="img-rounded" style="width: 170px; height: 50px;"></img>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="telaLivro.xhtml">Livro <i
+								class="fa fa-book"></i></a></li>
+						<li><a href="telaPesquisa.xhtml">Pesquisa de Livros <i
+								class="fa fa-search"></i>
+								<li><a href="telaCarrinho.xhtml">Meu Carrinho <i
+										class="fa fa-cart-plus"></i>
+								</a></li>
+								<li><a href="#">Lançamentos</a></li>
+								<li><a href="#">Promoções</a></li>
+								<li><a href="#">Mais Vendidos</a></li>
+								<li role="presentation" class="dropdown"><a
+									class="dropdown-toggle" data-toggle="dropdown" href="#"
+									role="button" aria-haspopup="true" aria-expanded="false">
+										Categoria <span class="caret"></span>
+								</a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Engenharia de Software</a></li>
+										<li><a href="#">Esportes</a></li>
+										<li><a href="#">Filosofia</a></li>
+										<li><a href="#">Sociologia</a></li>
+										<li><a href="#">Geografia</a></li>
+										<li><a href="#">História</a></li>
+										<li><a href="#">Política</a></li>
+										<li><a href="#">Medicina</a></li>
+										<li><a href="#">Infantil</a></li>
+										<li><a href="#">Ficção Científica</a></li>
+										<li><a href="#">Geologia</a></li>
+										<li><a href="#">Química</a></li>
+										<li><a href="#">Auto Ajuda</a></li>
+										<li><a href="#">Aventura</a></li>
+										<li><a href="#">Antologias</a></li>
+										<li><a href="#">Agropecuária</a></li>
+										<li><a href="#">Relações Internacionais</a></li>
+										<li><a href="#">Romance</a></li>
+										<li><a href="#">Biografia</a></li>
+										<li><a href="#">Português</a></li>
+										<li><a href="#">Biologia</a></li>
+									</ul></li>
+								<li><p>
+										<a href="http://localhost:8080/Livraria/1_telaLogin.xhtml"
+											class="btn btn-info btn-lg"> <span
+											class="glyphicon glyphicon-log-out"></span> Log out
+										</a>
+									</p></li>
+						</a></li>
+					</ul>
+				</div>
+			</div>
+			</nav>
+		</div>
+
+		<p:messages />
+
+		<div class="pageContent">
+			<div class="col-md-6">
+				<p:messages />
+				<h:form role="form" class="form-horizontal">
+
+					<h2>Administrativo</h2>
+
+					<div class="form-group">
+						<h:outputLabel for="txtISBN" class="col-md-4 control-label"
+							value="ISBN:" />
+						<div class="col-md-4">
+							<h:inputText id="txtISBN" styleClass="form-control"
+								value="${livroMB.livroAtual.ISBN}" />
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<h:outputLabel for="txtTitulo" class="col-md-4 control-label"
+							value="Título da Obra:" />
+						<div class="col-md-4">
+							<h:inputText id="txtTitulo" styleClass="form-control"
+								value="${livroMB.livroAtual.titulo}" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="textarea">Sumário:</label>
+						<div class="col-md-4">
+							<textarea class="form-control" id="textarea" name="textarea"></textarea>
+						</div>
+					</div>
+
+
+
+
+					<div class="form-group">
+						<h:outputLabel for="txtResumo" class="col-md-4 control-label"
+							value="Resumo da Obra:" />
+						<div class="col-md-4">
+							<h:inputText id="txtResumo" styleClass="form-control"
+								value="${livroMB.livroAtual.resumo}" />
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<h:outputLabel for="cbTipoCapa" class="col-md-4 control-label"
+							value="Tipo da Capa:" />
+
+						<div class="col-md-4">
+							<h:selectOneMenu id="cbTipoCapa" styleClass="form-control"
+								value="${livroMB.livroAtual.formatolivro}">
+								<f:selectItem itemLabel="Selecione a capa..."
+									noSelectionOption="true" />
+								<f:selectItem itemLabel="Capa Dura" noSelectionOption="true" />
+								<f:selectItem itemLabel="Brochura" noSelectionOption="true" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<h:outputLabel for="cbEditora" class="col-md-4 control-label"
+							value="Editora:" />
+
+						<div class="col-md-4">
+							<h:selectOneMenu id="cbEditora" styleClass="form-control"
+								value="${livroMB.livroAtual.editora}">
+								<f:selectItem itemLabel="Selecione uma editora..."
+									noSelectionOption="true" />
+								<f:selectItem itemLabel="Saraiva" itemValue="Saraiva" />
+								<f:selectItem itemLabel="Globo" itemValue="Saraiva" />
+								<f:selectItem itemLabel="Abril" itemValue="Saraiva" />
+								<f:selectItem itemLabel="Rocco" itemValue="Saraiva" />
+								<f:selectItem itemLabel="Moderna" itemValue="Saraiva" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<h:outputLabel for="cbAutor" class="col-md-4 control-label"
+							value="Autor:" />
+
+						<div class="col-md-4">
+							<h:selectOneMenu id="cbAutor" styleClass="form-control"
+								value="${livroMB.livroAtual.autor}">
+								<f:selectItem itemLabel="Selecione um autor..."
+									noSelectionOption="true" />
+								<f:selectItem itemLabel="James Watson" itemValue="James Watson" />
+								<f:selectItem itemLabel="Albert Einstein"
+									itemValue="James Watson" />
+								<f:selectItem itemLabel="Kobe Bryant" itemValue="James Watson" />
+								<f:selectItem itemLabel="Christofer Wayne"
+									itemValue="James Watson" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+
+
+
+					<!-- Text input-->
+					<div class="form-group">
+						<h:outputLabel for="txtNumPaginas" class="col-md-4 control-label"
+							value="N° de Páginas:" />
+						<div class="col-md-4">
+							<h:inputText id="txtNumPaginas" styleClass="form-control"
+								value="${livroMB.livroAtual.qtdpagina}" />
+						</div>
+					</div>
+					<div class="form-group">
+					<h:outputLabel for="txtImagem" class="col-md-4 control-label" value="Foto de Capa:"/>
+					<div class="col-md-4">
+					
+						<p:growl id="messages" showDetail="true" />
+
+						<p:fileUpload value="#{fileUploadView.file}" mode="simple"
+							skinSimple="true" />
+
+						<p:commandButton value="Submit" ajax="false"
+							actionListener="#{fileUploadView.upload}" disabled="false" />
+					</div></div>
+					
+
+
+					<div class="form-group">
+						<h:outputLabel for="txtDataPublicacao"
+							class="col-md-4 control-label" value="Data da Publicação:" />
+						<div class="col-md-4">
+							<p:calendar id="txtDataPublicacao"
+								value="${livroMB.livroAtual.datapublicao}" pattern="dd/MM/yyyy"
+								mask="true" locale="br" />
+						</div>
+					</div>
+
+
+					<div class="form-group">
+						<h:outputLabel for="txtPrecoVenda" class="col-md-4 control-label"
+							value="Preço de Venda:" />
+						<div class="col-md-4">
+							<div class="input-group margin-bottom-sm">
+								<span class="input-group-addon">R$</span>
+								<h:inputText id="txtPrecoVenda" styleClass="form-control"
+									value="${livroMB.livroAtual.precovenda}" />
+							</div>
+
+						</div>
+					</div>
+					
+					<center>
+					<div class="grupoBotao">
+
+						<div class="botao">
+							<h:commandButton styleClass="btn btn-success" value="Gravar"
+								action="${livroMB.gravarLivro()}" />
+							<h:commandButton styleClass="btn btn-danger" value="Excluir" 
+							action="${livroMB.deleteLivro(l)}"/>
+		
+
+						</div>
+
+					</div>
+					</center>
+
+				</h:form>
+
+				
+
+				<div class="pageFooter">
+					<span>Site em desenvolvimento ® All Rights Reserved 2016 - <a
+						href="https://facebook.com" target="_blank"><i
+							class="fa fa-facebook-official"></i> Facebook</a> / <a
+						href="https://google.com" target="_blank"><i
+							class="fa fa-google"></i> Google</a></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>
+

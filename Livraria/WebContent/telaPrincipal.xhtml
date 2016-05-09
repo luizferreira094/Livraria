@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge; charset=utf-8"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<meta name="description" content=""></meta>
+	<meta name="author" content=""></meta>
+	<title>Livraria Vendrabooks</title>
+
+	<script src="https://code.jquery.com/jquery-1.12.0.min.js" />
+
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" />
+
+	<link rel="stylesheet" href="css/styles.css" />
+
+</h:head>
+<h:body class="align">
+
+	<div id="container">
+		<div class="cabecalho">
+			<!-- Form Name -->
+			<!-- Text input-->
+			<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="telaLivro.xhtml"><i
+						class="fa fa-home fa-fw"> </i></a><img src="img/vendra.png"
+						class="img-rounded" style="width: 170px; height: 50px;"></img>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						
+						<li class="active"><a href="telaPesquisa.xhtml">Pesquisa
+								de Livros <i class="fa fa-search"></i>
+								<li><a href="telaCarrinho.xhtml">Meu Carrinho <i
+										class="fa fa-cart-plus"></i></a></li>
+								<li><a href="telaLivro.xhtml">Lançamentos</a></li>
+								<li><a href="#">Promoções </a></li>
+								<li><a href="#">Mais Vendidos</a></li>
+
+								<li role="presentation" class="dropdown"><a
+									class="dropdown-toggle" data-toggle="dropdown" href="#"
+									role="button" aria-haspopup="true" aria-expanded="false">
+										Categoria <span class="caret"></span>
+								</a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Engenharia de Software</a></li>
+										<li><a href="#">Esportes</a></li>
+										<li><a href="#">Filosofia</a></li>
+										<li><a href="#">Sociologia</a></li>
+										<li><a href="#">Geografia</a></li>
+										<li><a href="#">História</a></li>
+										<li><a href="#">Política</a></li>
+										<li><a href="#">Medicina</a></li>
+										<li><a href="#">Infantil</a></li>
+										<li><a href="#">Ficção Científica</a></li>
+										<li><a href="#">Geologia</a></li>
+										<li><a href="#">Química</a></li>
+										<li><a href="#">Auto Ajuda</a></li>
+										<li><a href="#">Aventura</a></li>
+										<li><a href="#">Antologias</a></li>
+										<li><a href="#">Agropecuária</a></li>
+										<li><a href="#">Relações Internacionais</a></li>
+										<li><a href="#">Romance</a></li>
+										<li><a href="#">Biografia</a></li>
+										<li><a href="#">Português</a></li>
+										<li><a href="#">Biologia</a></li>	
+									</ul></li>
+								<li><p>Log-out icon on a styled link button:
+        <a href="http://localhost:8080/Livraria/1_telaLogin.xhtml" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+      </p> </li>
+						</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+			<!--/.container-fluid --> </nav>
+		</div>
+		<p:messages />
+		<!-- Button -->
+		<h:form role="form" class="form-horizontal">
+
+			<div id="desejado">
+				<h2>Pesquise o livro desejado</h2>
+				<div id="custom-search-input">
+					<div class="input-group col-md-12">
+						<h:inputText id="txtLivro" type="text" binding="#{inputLivro}"
+							class="  search-query form-control"
+							placeholder="Título, Autor, Editora, etc..." />
+						<span class="input-group-btn">
+							<li><a href="PesquisadeLivro.xhtml"> <label
+									class="col-md-2 control-label" for="singlebutton"></label>
+									<div class="col-md-2">
+										<h:commandButton styleClass="btn btn-primary"
+											value="Pesquisar"
+											action="#{livroMB.buscarLivro(inputLivro.value)}" />
+									</div></a></li>
+
+						</span>
+					</div>
+				</div>
+			</div>
+
+
+		
+
+		<h:form role="form" class="form-horizontal">
+
+			<!-- Form Name -->
+			<h2>Busca Avançada</h2>
+
+			<!-- Search input-->
+			<div class="form-group">
+				<h:outputLabel for="txtTitulo" class="col-md-4 control-label"
+					value="Título da Obra:" />
+				<div class="col-md-4">
+					<h:inputText id="txtTitulo" styleClass="form-control"
+						binding="#{inputTitulo}" value="${livroMB.livroAtual.titulo}" />
+				</div>
+			</div>
+
+			<!-- Search input-->
+			<div class="form-group">
+				<h:outputLabel for="txtAutor" class="col-md-4 control-label"
+					value="Autor:" />
+				<div class="col-md-4">
+					<h:inputText id="txtAutor" styleClass="form-control"
+						binding="#{inputAutor}" value="${livroMB.livroAtual.autor}" />
+				</div>
+			</div>
+
+			<!-- Search input-->
+			<div class="form-group">
+				<h:outputLabel for="cbEditora" class="col-md-4 control-label"
+					value="Editora:" />
+
+				<div class="col-md-4">
+					<h:selectOneMenu id="cbEditora" styleClass="form-control"
+						value="${livroMB.livroAtual.editora}">
+						<f:selectItem itemLabel="Selecione uma editora..."
+							noSelectionOption="true" />
+						<f:selectItem itemLabel="Saraiva" itemValue="Saraiva" />
+						<f:selectItem itemLabel="Globo" itemValue="Globo" />
+						<f:selectItem itemLabel="Abril" itemValue="Abril" />
+						<f:selectItem itemLabel="Rocco" itemValue="Rocco" />
+						<f:selectItem itemLabel="Moderna" itemValue="Moderna" />
+						<f:selectItem itemLabel="Outros..." itemValue="Outros..." />
+					</h:selectOneMenu>
+				</div>
+			</div>
+
+
+			<!-- Search input-->
+			<div class="form-group">
+				<h:outputLabel for="cbCategoria" class="col-md-4 control-label"
+					value="Categoria:" />
+
+				<div class="col-md-4">
+					<h:selectOneMenu id="cbCategoria" styleClass="form-control"
+						value="${livroMB.livroAtual.categoria}">
+						<f:selectItem itemLabel="Selecione uma categoria..."
+							noSelectionOption="true" />
+						<f:selectItem itemLabel="Ficção" itemValue="Ficção" />
+						<f:selectItem itemLabel="Economia" itemValue="Economia" />
+						<f:selectItem itemLabel="Agronomia" itemValue="Agronomia" />
+						<f:selectItem itemLabel="Esportes" itemValue="Esportes" />
+						<f:selectItem itemLabel="Sociologia" itemValue="Sociologia" />
+						<f:selectItem itemLabel="Filosofia" itemValue="Filosofia" />
+						<f:selectItem itemLabel="Outros..." itemValue="Outros..." />
+					</h:selectOneMenu>
+
+				</div>
+			</div>
+
+			<!-- Button -->
+			<div class="form-group">
+
+				<label class="col-md-4 control-label" for="singlebutton"></label>
+				<div class="col-md-2">
+					<h:commandButton styleClass="btn btn-warning" value="Buscar"
+						action="${livroMB.buscarLivro(inputTitulo.value)}" />
+
+				</div>
+			</div>
+
+
+		</h:form>
+
+		
+
+		<div></div>
+
+
+		<div class="container">
+
+			<ui:repeat var="l" value="#{livroMB.livros}" varStatus="status">
+
+				<div class="col-md-4">
+					<div class="thumbnail">
+						<img
+							src="http://placehold.it/350x250"
+							alt="ALT NAME" class="img-responsive" />
+						<div class="caption">
+							<h3>#{l.titulo}</h3>
+							<p>#{l.autor}</p>
+							<h3>R$ #{l.precovenda}</h3>
+							<p align="center">
+								<a href="carrinho.xhtml" class="btn btn-primary btn-block">Adicionar
+									no Carrinho <i class="fa fa-cart-plus"></i>
+								</a> <span class="input-group-btn">
+									<li><a href="http://localhost:8080/Livraria/detalhe.xhtml">
+											<label class="col-md-2 control-label" for="singlebutton"></label>
+											<div class="col-md-2">
+												<button class="btn btn-danger">
+													Espiar <i class="fa fa-arrow-right"></i>
+												</button>
+
+											</div>
+									</a></li>
+								</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</ui:repeat>
+
+		</div>
+
+    </h:form>
+	</div>
+	<div class="footer text-center center-block">
+		<span>Site em desenvolvimento ® All Rights Reserved 2016 - <a
+			href="https://facebook.com" target="_blank"><i
+				class="fa fa-facebook-official"></i> Facebook</a> / <a
+			href="https://google.com" target="_blank"><i class="fa fa-google"></i>
+				Google</a></span>
+	</div>
+</h:body>
+</html>
+
+
+
+
+
