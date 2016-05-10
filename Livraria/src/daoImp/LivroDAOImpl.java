@@ -101,7 +101,7 @@ public class LivroDAOImpl implements LivroDAO {
 	@Override
 	public boolean delete(Connection conn, Integer isbn) throws SQLException {
 
-		String sql = "delete from livro where isbn = ?";
+		String sql = "delete from livro where isbn = ? limit 1";
 		
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		
@@ -114,5 +114,37 @@ public class LivroDAOImpl implements LivroDAO {
 		
 		return true;
 	}
+	
+	public List<Livro> selectAdvanced(Connection conn, Livro l) throws SQLException {
+
+		List<Livro> livroList = new ArrayList<>();
+
+		String sql = "select * from livro where titulo = ? union select * from livro where autor = ? union select * from livro where editora = ? union select * from livro where categoria = ?";
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		stmt.setString(1, l.getTitulo());
+		stmt.setString(2, l.getAutor());
+		stmt.setString(3, l.getEditora());
+		stmt.setString(4, l.getCategoria());
+		
+		
+		System.out.println(stmt.toString());
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			Livro livro = new Livro();
+
+			livro.setTitulo(rs.getString("titulo"));
+			livro.setAutor(rs.getString("autor"));
+			livro.setPrecovenda(rs.getDouble("precovenda"));
+
+			livroList.add(livro);
+		}
+
+		rs.close();
+		stmt.close();
+
+		return livroList;
+	}
+	
 
 }

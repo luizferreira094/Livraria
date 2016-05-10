@@ -63,11 +63,9 @@ public class CarrinhoMB implements Serializable {
 		return "";
 	}
 
-	public Double alterarQuantidade(Integer qtd, Double preco) {
-
-		Double valorTotal = qtd * preco;
-
-		return valorTotal;
+	public Double alterarQuantidade(Carrinho carrinho) {
+		CarrinhoController control = new CarrinhoController();
+		return control.calcularTotal(carrinho);
 
 	}
 	

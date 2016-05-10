@@ -9,7 +9,7 @@ public class GenericDAO {
 	private static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	private static String JDBC_URL = "jdbc:mysql://localhost:3306/livraria";
 	private static String USER = "root";
-	private static String PASSWORD = "root"; // NAO ESQUECE DE MUDAR AQUI HEIN
+	private static String PASSWORD = "aluno"; // NAO ESQUECE DE MUDAR AQUI HEIN
 	
 	private static GenericDAO instancia;
 	private Connection con;

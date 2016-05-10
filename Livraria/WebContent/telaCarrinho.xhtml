@@ -119,7 +119,7 @@
 				</p:column>
 
 				<p:column headerText="Preço">
-					<h:outputText value="#{l.precovenda}" />
+					<h:outputText var = preco value="#{l.precovenda}" />
 				</p:column>
 				<p:column headerText="Quantidade">
 					<h:outputLabel for="basic" value=" " />
@@ -149,7 +149,7 @@
 				<label class="col-md-7 control-label" for="textinput">Valor
 					Total:</label>
 				<div class="col-md-1">
-					<h:outputText id="textinput" name="textinput" type="text"
+					<h:outputText id="textinput" value = #{livroMB.alterarQuantidade(value=preco)} name="textinput" type="text"
 						placeholder="R$" class="form-control input-md" />
 
 				</div>

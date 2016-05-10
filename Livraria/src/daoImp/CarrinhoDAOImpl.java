@@ -45,7 +45,7 @@ public class CarrinhoDAOImpl implements CarrinhoDAO {
 
 	@Override
 	public void removerItem(Connection conn, Livro livro) throws SQLException {
-		String sql = "delete from carrinho where isbn = ?";
+		String sql = "delete from carrinho where isbn = ? limit 1";
 		
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		
@@ -73,11 +73,10 @@ public class CarrinhoDAOImpl implements CarrinhoDAO {
 		
 	}
 	
-	public List<Livro> select(Connection conn, Integer idCarrinho) throws SQLException{
-		String sql = "select * from livro inner join carrinho on livro.isbn = carrinho.isbn where id_carrinho = ?";
+	public List<Livro> select(Connection conn) throws SQLException{
+		String sql = "select * from livro inner join carrinho on livro.isbn = carrinho.isbn";
 		List<Livro> livroList = new ArrayList<Livro>();
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setInt(1, idCarrinho);
 		ResultSet rs = stmt.executeQuery();
 		
 		while(rs.next()){
@@ -89,7 +88,7 @@ public class CarrinhoDAOImpl implements CarrinhoDAO {
 			l.setEditora(rs.getString("editora"));
 			l.setQtdpagina(rs.getInt("qtdpagina"));
 			l.setFormatolivro(rs.getString("formatolivro"));
-			l.setDatapublicao(rs.getDate("datapublicacao"));
+			l.setDatapublicao(rs.getDate("datapublicao"));
 			l.setISBN(rs.getInt("ISBN"));
 			l.setCategoria(rs.getString("categoria"));
 			l.setPrecovenda(rs.getDouble("precovenda"));
