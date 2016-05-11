@@ -22,7 +22,16 @@ public class Livro {
 	BigDecimal margelucro;
 	int qtdestoque;	
 	Blob imagem;
+	private int quantidade;
 	
+	
+	
+	public int getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
 	public String getTitulo() {
 		return titulo;
 	}

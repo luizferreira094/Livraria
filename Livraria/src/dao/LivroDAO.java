@@ -12,5 +12,6 @@ public interface LivroDAO {
 	public Livro details(Connection conn, String nome) throws SQLException;
 	public List<Livro> select(Connection conn, String sql, String busca) throws SQLException;
 	public boolean delete(Connection conn, Integer isbn) throws SQLException;
+	public List<Livro>selectAdvanced(Connection conn, Livro l) throws SQLException;
 
 }

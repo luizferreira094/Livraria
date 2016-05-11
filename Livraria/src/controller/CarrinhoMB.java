@@ -63,12 +63,12 @@ public class CarrinhoMB implements Serializable {
 		return "";
 	}
 
-	public Double alterarQuantidade(Carrinho carrinho) {
-		CarrinhoController control = new CarrinhoController();
-		return control.calcularTotal(carrinho);
-
-	}
-	
+//	public Double alterarQuantidade(Carrinho carrinho) {
+//		CarrinhoController control = new CarrinhoController();
+////		return control.calcularTotal(carrinho);
+//
+//	}
+//	
 	public Double getValorTemp() {
 		return valorTemp;
 	}

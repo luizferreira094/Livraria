@@ -27,14 +27,8 @@ public class CarrinhoController {
 
 	}
 	
-	public Double calcularTotal(Carrinho carrinho){
-		double total = 0;
-		
-		for(Livro l : carrinho.getLista()){
-			total = (total+l.getPrecovenda());
-		}
-		
-		return total;
+	public Double calcularTotal(Livro livro){
+		return livro.getPrecovenda()*livro.getQuantidade();
 		
 	}
 }

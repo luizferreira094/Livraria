@@ -35,7 +35,7 @@ public class CarrinhoDAOImpl implements CarrinhoDAO {
 		
 		PreparedStatement stmt = conn.prepareStatement(sql);
 		
-		stmt.setInt(1, carrinho.getQuantidade());
+//		stmt.setInt(1, carrinho.getQuantidade());
 		stmt.setDouble(2, carrinho.getTotal());
 		stmt.setInt(3, carrinho.getIdCarrinho());
 		

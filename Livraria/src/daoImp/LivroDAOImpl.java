@@ -14,7 +14,7 @@ public class LivroDAOImpl implements LivroDAO {
 
 	@Override
 	public void insert(Connection conn, Livro livro) throws SQLException {
-		String sql = "insert into livro(titulo,autor,resumo,sumario,editora,qtdpagina,formatolivro,datapublicao,ISBN,categoria,precovenda,precocusto,margelucro,qtdestoque)"
+		String sql = "insert into livro(titulo,autor,resumo,sumario,editora,qtdpagina,formatolivro,datapublicacao,ISBN,categoria,precovenda,precocusto,margelucro,qtdestoque)"
 				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -118,15 +118,30 @@ public class LivroDAOImpl implements LivroDAO {
 	public List<Livro> selectAdvanced(Connection conn, Livro l) throws SQLException {
 
 		List<Livro> livroList = new ArrayList<>();
-
+			
+		
 		String sql = "select * from livro where titulo = ? union select * from livro where autor = ? union select * from livro where editora = ? union select * from livro where categoria = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1, l.getTitulo());
-		stmt.setString(2, l.getAutor());
-		stmt.setString(3, l.getEditora());
-		stmt.setString(4, l.getCategoria());
-		
-		
+		if (l.getTitulo() != null) {
+			stmt.setString(1, l.getTitulo());
+		}else{
+			stmt.setNull(1, java.sql.Types.VARCHAR);
+		}
+		if (l.getAutor() != null) {
+			stmt.setString(2, l.getAutor());
+		}else{
+			stmt.setNull(2, java.sql.Types.VARCHAR);
+		}
+		if (l.getEditora() != null) {
+			stmt.setString(3, l.getEditora());
+		}else{
+			stmt.setNull(3, java.sql.Types.VARCHAR);
+		}
+		if (l.getCategoria() != null) {
+			stmt.setString(4, l.getCategoria());
+		}else{
+			stmt.setNull(4, java.sql.Types.VARCHAR);
+		}
 		System.out.println(stmt.toString());
 		ResultSet rs = stmt.executeQuery();
 

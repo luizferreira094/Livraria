@@ -55,6 +55,23 @@ public class LivroMB implements Serializable {
 		
 		return "";
 	}
+	public List<Livro> buscaAvancada(Livro l){
+		try {
+			Connection conn = GenericDAO.getInstance().getCon();
+
+			livros = livroDAO.selectAdvanced(conn, l);
+			
+		} catch (ClassNotFoundException e) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro na pesquisa do livro!", "ERRO"));
+			e.printStackTrace();
+		} catch (SQLException e) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro na pesquisa do livro!", "ERRO"));
+			e.printStackTrace();
+		}
+		return livros;
+	}
 
 	public String gravarLivro() {
 		try {
