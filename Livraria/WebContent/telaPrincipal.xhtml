@@ -226,10 +226,10 @@
 							<p>#{l.autor}</p>
 							<h3>R$ #{l.precovenda}</h3>
 							<p align="center">
-								<a href="carrinho.xhtml" class="btn btn-primary btn-block">Adicionar
-									no Carrinho <i class="fa fa-cart-plus"></i>
+								<a href="telaCarrinho.xhtml" class="btn btn-primary btn-block">Adicionar
+									no Carrinho <i class="fa fa-cart-plus" action="${carrinhoMB.adicionarCarrinho(l)}"></i>
 								</a> <span class="input-group-btn">
-									<li><a href="http://localhost:8080/Livraria/detalhe.xhtml">
+									<li><a href="http://localhost:8080/Livraria/telaDetalhe.xhtml">
 											<label class="col-md-2 control-label" for="singlebutton"></label>
 											<div class="col-md-2">
 												<button class="btn btn-danger">

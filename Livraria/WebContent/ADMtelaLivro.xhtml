@@ -127,7 +127,7 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="textarea">Sumário:</label>
 						<div class="col-md-4">
-							<textarea class="form-control" id="textarea" name="textarea"></textarea>
+							<textarea class="form-control" id="textarea" value = "${livroMB.livroAtual.sumario}" name="textarea"></textarea>
 						</div>
 					</div>
 
@@ -151,10 +151,10 @@
 						<div class="col-md-4">
 							<h:selectOneMenu id="cbTipoCapa" styleClass="form-control"
 								value="${livroMB.livroAtual.formatolivro}">
-								<f:selectItem itemLabel="Selecione a capa..."
+								<f:selectItem itemLabel="Selecione a capa..." itemValue=""
 									noSelectionOption="true" />
-								<f:selectItem itemLabel="Capa Dura" noSelectionOption="true" />
-								<f:selectItem itemLabel="Brochura" noSelectionOption="true" />
+								<f:selectItem itemLabel="Capa Dura" itemValue="Capa Dura" noSelectionOption="true" />
+								<f:selectItem itemLabel="Brochura" itemValue="Brochura" noSelectionOption="true" />
 							</h:selectOneMenu>
 						</div>
 					</div>
@@ -167,13 +167,13 @@
 						<div class="col-md-4">
 							<h:selectOneMenu id="cbEditora" styleClass="form-control"
 								value="${livroMB.livroAtual.editora}">
-								<f:selectItem itemLabel="Selecione uma editora..."
+								<f:selectItem itemLabel="Selecione uma editora..." itemValue=""
 									noSelectionOption="true" />
 								<f:selectItem itemLabel="Saraiva" itemValue="Saraiva" />
-								<f:selectItem itemLabel="Globo" itemValue="Saraiva" />
-								<f:selectItem itemLabel="Abril" itemValue="Saraiva" />
-								<f:selectItem itemLabel="Rocco" itemValue="Saraiva" />
-								<f:selectItem itemLabel="Moderna" itemValue="Saraiva" />
+								<f:selectItem itemLabel="Globo" itemValue="Globo" />
+								<f:selectItem itemLabel="Abril" itemValue="Abril" />
+								<f:selectItem itemLabel="Rocco" itemValue="Rocco" />
+								<f:selectItem itemLabel="Moderna" itemValue="Moderna" />
 							</h:selectOneMenu>
 						</div>
 					</div>
@@ -186,14 +186,12 @@
 						<div class="col-md-4">
 							<h:selectOneMenu id="cbAutor" styleClass="form-control"
 								value="${livroMB.livroAtual.autor}">
-								<f:selectItem itemLabel="Selecione um autor..."
+								<f:selectItem itemLabel="Selecione um autor..." itemValue=""
 									noSelectionOption="true" />
 								<f:selectItem itemLabel="James Watson" itemValue="James Watson" />
-								<f:selectItem itemLabel="Albert Einstein"
-									itemValue="James Watson" />
-								<f:selectItem itemLabel="Kobe Bryant" itemValue="James Watson" />
-								<f:selectItem itemLabel="Christofer Wayne"
-									itemValue="James Watson" />
+								<f:selectItem itemLabel="Albert Einstein" itemValue="Albert Einstein" />
+								<f:selectItem itemLabel="Kobe Bryant" itemValue="Kobe Bryant" />
+								<f:selectItem itemLabel="Christofer Wayne" itemValue="Christofer Wayne" />
 							</h:selectOneMenu>
 						</div>
 					</div>

@@ -103,7 +103,7 @@
 </style>
 
 
-			<p:dataTable id="dtVenda" var="livros" value="#{carrinhoMB.atualizarCarrinho()}"
+			<p:dataTable id="dtVenda" var="l" value="#{carrinhoMB.atualizarCarrinho()}"
 				paginator="true" editable="true" rows="10" scrollable="true"
 				emptyMessage="Nenhum registro encontrado.">
 				<f:facet name="header">
@@ -119,11 +119,11 @@
 				</p:column>
 
 				<p:column headerText="Preço">
-					<h:outputText var = preco value="#{l.precovenda}" />
+					<h:outputText value="#{l.precovenda}" />
 				</p:column>
 				<p:column headerText="Quantidade">
-					<h:outputLabel for="basic" value=" " />
-					<p:spinner id="basic" size="3" value="#{spinnerView.number1}" />
+					<h:outputLabel for="basic"  value=" " />
+					<p:spinner id="basic" size="3" var="quantidade" value="#{spinnerView.number1}" />
 					<h:outputText value="" />
         <p:selectBooleanCheckbox value="#{selectBooleanView.value1}" />
 
@@ -149,7 +149,7 @@
 				<label class="col-md-7 control-label" for="textinput">Valor
 					Total:</label>
 				<div class="col-md-1">
-					<h:outputText id="textinput" value = #{livroMB.alterarQuantidade(value=preco)} name="textinput" type="text"
+					<h:outputText id="textinput" value="#{livroMB.alterarQuantidade(quantidade)}" name="textinput" type="text"
 						placeholder="R$" class="form-control input-md" />
 
 				</div>

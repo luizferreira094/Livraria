@@ -108,7 +108,7 @@
 			<!-- Search input-->
 			<div class="form-group">
 				<h:outputLabel for="txtTitulo" class="col-md-4 control-label"
-					value="Título da Obra:" />
+					 value="Título da Obra:" />
 				<div class="col-md-4">
 					<h:inputText id="txtTitulo" styleClass="form-control"
 						binding="#{inputTitulo}" value="${livroMB.livroAtual.titulo}" />
@@ -174,7 +174,7 @@
 				<label class="col-md-4 control-label" for="singlebutton"></label>
 				<div class="col-md-2">
 					<h:commandButton styleClass="btn btn-warning" value="Buscar"
-						action="${livroMB.buscaAvancada(livroAtual)}" />
+						action="${livroMB.buscaAvancada(livroMB.livroAtual)}" />
 
 				</div>
 			</div>

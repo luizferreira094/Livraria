@@ -58,7 +58,7 @@ public class LivroMB implements Serializable {
 	public List<Livro> buscaAvancada(Livro l){
 		try {
 			Connection conn = GenericDAO.getInstance().getCon();
-
+			livros = null;
 			livros = livroDAO.selectAdvanced(conn, l);
 			
 		} catch (ClassNotFoundException e) {

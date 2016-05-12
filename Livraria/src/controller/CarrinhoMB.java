@@ -28,11 +28,12 @@ public class CarrinhoMB implements Serializable {
 	private List<Carrinho> carrinhos;
 	private CarrinhoDAO carrinhoDAO;
 	
-	public CarrinhoMB() {
+	public CarrinhoMB() throws ClassNotFoundException, SQLException {
 		carrinhoAtual = new Carrinho();
-		carrinhos = new ArrayList<Carrinho>();
 		carrinhoDAO = new CarrinhoDAOImpl();
+		atualizarCarrinho();
 	}
+	
 	
 	public String adicionarCarrinho(Livro livro) throws ClassNotFoundException, SQLException{
 		CarrinhoController control = new CarrinhoController();
@@ -42,9 +43,8 @@ public class CarrinhoMB implements Serializable {
 	
 	public List<Livro> atualizarCarrinho() throws ClassNotFoundException, SQLException{
 		CarrinhoController control = new CarrinhoController();
-		Carrinho carrinho = new Carrinho();
-		carrinho.setLista(control.montarCarrinho());
-		return carrinho.getLista();
+		List<Livro> livros = control.montarCarrinho();
+		return livros;
 	}
 	
 	public void editar(Carrinho carrinho) {
